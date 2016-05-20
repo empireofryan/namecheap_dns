@@ -1,0 +1,22 @@
+---
+key: 3
+title: Contact
+permalink: /contact/
+options: nolanding
+excerpt: Get in touch
+background-image: caustic_light.jpg
+script-includes:
+  - /js/jquery.validate.min.js
+script: |
+  $("#sendemail").validate();
+---
+
+<section>
+  <form action="https://getsimpleform.com/messages?form_api_token=341fde1e81812a20c026f2fd7e85d543" method="post">
+    <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
+    <input type='hidden' name='redirect_to' value='http:/www.ryanj.tech/contact-success.html' />
+    <!-- all your input fields here.... -->
+    <input type='text' name='test' />
+    <input type='submit' value='Test form' />
+  </form>
+</section>
