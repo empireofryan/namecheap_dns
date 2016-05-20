@@ -17,7 +17,7 @@ owner:
   name: Ryan Johnson
   email: rjohnson2001@gmail.com
   url: http://ryanj.tech
-first_published: 2008 # if migrating another site, the year of your first publish
+first_published: 2010 # if migrating another site, the year of your first publish
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://ryanj.tech" # the base hostname & protocol for your site
 
