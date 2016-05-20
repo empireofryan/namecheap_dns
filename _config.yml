@@ -24,7 +24,7 @@ url: "http://ryanj.tech" # the base hostname & protocol for your site
 # on landing page
 # - set the greeting only if you want to display the first green section
 greeting:
-  title: Ruby / Rails / AngularJS / Node / Ember / CSS / Postgres / Heroku / Photoshop
+  title: Ruby / Rails / Angular / Ember / CSS / Postgres / Heroku / Photoshop
   text: Complete Full-Stack solutions. From wireframe to deployment.
 # - title for your blog's featured posts
 features-title: Featured topics
@@ -39,7 +39,7 @@ social:
   #linkedin-square: https://linkedin.com/in/
  # facebook-official: https://facebook.com/
  # google-plus-square: https://plus.google.com/
-  email: rjohnson2001@gmail.com
+  email: /contact/
   #flickr:
   #instagram:
   #youtube-square:
