@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>http://ryanj.tech/</loc>
-      <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+      <lastmod>2016-05-22T18:45:24-04:00</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
+    </url>
+    <url>
+      <loc>http://ryanj.tech/topics/sinatra-app.html</loc>
+        <lastmod>2016-05-22T00:00:00-04:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/topics/Ruby_on_Rails/</loc>
@@ -26,43 +32,43 @@
     </url>
     <url>
       <loc>http://ryanj.tech/contact-success/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/contact-success/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/contact/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/credits/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/topics/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
       <loc>http://ryanj.tech/works/</loc>
-        <lastmod>2016-05-20T18:50:15-04:00</lastmod>
+        <lastmod>2016-05-22T18:45:24-04:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
