@@ -24,7 +24,7 @@ url: "http://ryanj.tech" # the base hostname & protocol for your site
 # on landing page
 # - set the greeting only if you want to display the first green section
 greeting:
-  title: Ruby / Rails / Angular / Ember / CSS / Postgres / Heroku / Photoshop
+  title: Ruby / Rails / Angular / More
   text: Complete Full-Stack solutions. From wireframe to deployment.
 # - title for your blog's featured posts
 features-title: Featured topics
