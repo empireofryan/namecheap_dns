@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angular Frontend on Rails</title>
+  <meta name="description" content="Screenplay ranking app on AngularJS frontend with Rails API backend.">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://ryanj.tech/topics/angular-frontend-on-rails.html">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <style>
+  #main > header {
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/angular.jpg");
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/angular.jpg");
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/angular.jpg");
+    background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/angular.jpg");
+  }
+  </style>
+  <!--[if lte IE 9]>
+  <style>
+  #main > header {
+    background-image: url("/images/angular.jpg");
+  }
+  </style>
+  -->
+  <link rel="alternate" type="application/rss+xml" title="ryan johnson" href="http://ryanj.tech/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">ryan johnson</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/works/">Works</a></li>
+            <li><a href="/topics/">Topics</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/feed.xml"
+                   class="icon fa-feed"> RSS Feed</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+          <header>
+    <h2>Angular Frontend on Rails</h2>
+    <p>Screenplay ranking app on AngularJS frontend with Rails API backend.</p>
+  </header>
+  <ul class="breadcrumb">
+  <li><a href="/index.html">Home</a></li>
+  <li style="text-transform: capitalize;"><a href="/topics">topics</a></li>
+  <li>Angular Frontend on Rails</li>
+</ul>
+
+
+
+          <section class="wrapper style5">
+    <div class="inner">
+      <span id="post-date">6 June 2016</span><hr
+        style="margin-top:3px;" />
+
+      <h4>ScriptRank</h4>
+<p><a href="http://github.com/empireofryan/scriptrank">Launch Github</a></p>
+<p>ScriptRank is a reenvisioning of a prior Rails project. Now updated to Angular, the program functions as a single page app.</p>
+
+<p>The current iteration of the app includes a Devise authentication, which only allows for a user to login and create a new script or browse and vote/review on already made ones.</p>
+
+<p>The URL path, "localhost:3000/#/scripts" loads the scripts index page. What was previously done by routing into a "genres" URL. The magic of Angular filters searches the script based on clicking the genre.</p>
+
+<p><img src="https://photos-6.dropbox.com/t/2/AAC6V_HsJB5Py0fY4dsLU50v3wdt9o8uu7mV5EVA4PmuPw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.03.png/EMzIsasEGJ8CIAIoAg/vYfrnEc6JhLmrbzfvlI6Bx6xSt1nZF-IePDE8ht7dnc?size=2048x1536&amp;size_mode=3" style="width:100%" /></p>
+
+<p>Did you spot the link target at the bottom left? It points to a JSON object rather than a page. Check out the next image. Notice something about the URL? It's exactly the same!</p>
+
+<p><img src="https://photos-3.dropbox.com/t/2/AABCgqkQKs6kMl6M5CAcYddGs3kThv4hoZ3x7bbpezF3tw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.27.png/EMzIsasEGJ8CIAIoAg/HPgCn76HSDsZjSLXyEymLoe2kF1ps4uO6IW7oSi8CGA?size=2048x1536&amp;size_mode=3" style="width:100%" /></p>
+
+<p>You don't need to own a classic Thunderbird to want to take a look under the hood. Here's the magic behind the invisible reload functionality. Let's break it down step by step:</p>
+
+<xmp>
+def index
+  @scripts = Script.where(genre_id: params[:genre_id])
+    respond_to do |f|
+    f.html { render :index }
+    f.json { render json: @scripts }
+   end
+end
+
+def show
+  @script = Script.includes(:genre).find(params[:id])
+  respond_to do |f|
+    f.html { render :show }
+    f.json { render json: @script }
+  end
+end
+</xmp>
+
+<hr style="margin-bottom:12px;" />
+<div class="author">
+<!-- style="margin:8px 28px 12px 0;position:relative;float:left;"> -->
+  <!-- style="position: relative; float: left;margin:0;padding:0;" -->
+  <div style="display:inline-block;border-radius:7px;overflow:hidden;height:100px;width:100px;background:url(/images/);background-size:100px;"></div>
+  <div style="display:inline-block;padding-left:12px;vertical-align:top;"><b>by:<br /> Ryan</b><br />(<a href="mailto:"></a>)<br
+    /><i><a href="" target="_blank"></a></i>
+  </div>
+  <div class="auth-desc"></div>
+</div>
+<hr style="margin-top:9px;" />
+
+  
+    </div>
+  </section>
+
+
+      </article>
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    <li><a target="_blank" href="https://twitter.com/empireofryan" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    <li><a target="_blank" href="https://github.com/empireofryan" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    <li><a target="_blank" href="/contact/" class="icon fa-envelope"
+           ><span class="label">E-mail</span></a></li>
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 2010,
+    2016
+      Ryan Johnson</li>
+    <!-- <li><a href="/credits/">Credits</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+    </div>
+
+  </body>
+
+</html>
