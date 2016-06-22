@@ -1,6 +1,6 @@
 ---
 title: Project Euler Type Ruby Questions
-excerpt:
+excerpt: Find the second largest number in a list without using 'sort' method.
 author: Ryan Johnson
 categories:
   - topics
