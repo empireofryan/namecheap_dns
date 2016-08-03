@@ -30,7 +30,7 @@ greeting:
 features-title: Featured topics
 # - displayed at the bottom
 closing-head: Thanks for visiting
-closing-para: Feel free to get in touch. Cheers!
+closing-para: Feel free to get in touch.
 
 # on all pages (and the first three you list display with greeting, if included)
 social:
