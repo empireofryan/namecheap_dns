@@ -1,14 +1,14 @@
 ---
 key: 2
-title: Topics
+title: Blog
 permalink: /topics/
 options: fullwidth
-excerpt: Just ramblings and musings? Nay, nay
+excerpt: My thoughts on code
 image: pic01.jpg
 background-image: pic01.jpg
 ---
 
-{%  if site.posts %}{%
+<!-- {%  if site.posts %}{%
       if site.tags.featured %}
   <hr style="margin:0 0 1em 0;" />
   <h4>Featured</h4>
@@ -28,7 +28,7 @@ background-image: pic01.jpg
         endfor %}
   </ul>{%
       endif %}
-  <hr style="margin:1em 0 1em 0;" />
+  <hr style="margin:1em 0 1em 0;" /> -->
 
     <ul style="list-style-type: none;">{%
       assign p = '9999'
@@ -37,13 +37,14 @@ background-image: pic01.jpg
 %}{%    if n != p
 %}{%      assign p = n
 %}
-      <br /><h5>{{ n }}</h5>{%
+<div style="text-align:center">
+      <br /><h5 style="margin-top:-40px; margin-bottom:40px">{{ n }}</h5>{%
         endif %}
-      <li style="padding-bottom: 6px;"><code>[{{ post.date | date: "%d %b" }}]</code>&nbsp;
-        <a href="{{ post.url }}" style="white-space: nowrap;"><b>{{ post.title }}</b></a>&nbsp;
-          {{ post.excerpt | strip_html | truncatewords: 12 }}</li>{%
+      <h3 style="padding-bottom: -20px;"><code>[{{ post.date | date: "%d %b" }}]</code></h3>
+        <h2 style="padding-bottom:-30px"><a href="{{ post.url }}" style="white-space: nowrap;"><b>{{ post.title }}</b></h2></a>
+          <p style="margin-bottom:40px; width:60%; margin: 0 auto;">{{ post.excerpt | strip_html | truncatewords: 30 }}</p><br><br>{%
       endfor
 %}
-    </ul>
 
+</div>
 {%  endif %}

@@ -1,13 +1,296 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>arkadianriver</title>
-    <description>Flowing creativity &amp;#x2192; Cascading bliss</description>
-    <link>http://arkadianriver.com/</link>
-    <atom:link href="http://arkadianriver.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 May 2016 14:18:28 -0400</pubDate>
-    <lastBuildDate>Fri, 20 May 2016 14:18:28 -0400</lastBuildDate>
+    <title>ryan johnson</title>
+    <description>Full Stack &amp;#x2192; Dev</description>
+    <link>http://ryanj.tech/</link>
+    <atom:link href="http://ryanj.tech/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 02 Aug 2016 18:44:59 -0400</pubDate>
+    <lastBuildDate>Tue, 02 Aug 2016 18:44:59 -0400</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Project Euler Type Ruby Questions</title>
+        <description>&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Anyone with familiarity of Ruby knows basic conditionals (if, else, while) and methods of iteration (.each do&lt;/td&gt;
+      &lt;td&gt;i&lt;/td&gt;
+      &lt;td&gt;). What really gets the brain cells firing is a set of Ruby puzzles known as &lt;a href=&quot;https://projecteuler.net/&quot;&gt;Project Euler&lt;/a&gt;. These computational logic questions can trip up a developer with plenty of Rails/JavaScript experience (me) but not enough time spent understanding computational problems (me again).&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I spend the past couple days breaking down how to solve these types of problems. Let’s start with the premise, &lt;b&gt;find the second largest number in a list&lt;/b&gt;. Oh, and to make it beyond a one-line challenge, do it without using Ruby’s sort method. How do we solve that? Like any big problem, let’s begin by breaking it down.&lt;/p&gt;
+
+&lt;p&gt;#Need two variables, max_so_far and max_second
+Step outside the world of coding an imagine you’re doing down a list of basketball players with their jersey numbers. If you wanted to return the highest number, you’d start with the first number, let’s say it’s 14, then you’d move to the next number, say 44, and ask is first number (14) greater than next number (44). If the next number is greater than the previous number we want to replace the second number with the first.&lt;/p&gt;
+
+&lt;p&gt;Even though the language above is written in basic English and pseudocode, the keywords describe just what we’re looking for.
+First number and next number &amp;lt;- going to need two variables
+“Is first number greater than next number” &amp;lt;- require &amp;gt; variables
+“If the next number is greater…replace” &amp;lt;- if conditional needed&lt;/p&gt;
+
+&lt;p&gt;This is a great starting point to begin with what we know.&lt;/p&gt;
+
+&lt;p&gt;Assuming we work with all positive integers (as far as I know there’s no negative jersey numbers) we can set two variables max_so_far (the biggest number found in the list) and max_second (the second biggest number) as ‘-1’ which essentially renders them nil. Knowing to place all the logic inside a method, an appropriate name would be max, taking an argument of list.&lt;/p&gt;
+
+&lt;xmp&gt;
+def max(list)
+  max_so_far = -1
+  max_second = -1
+end
+&lt;/xmp&gt;
+
+&lt;p&gt;Now it’s time to iterate over the list. Taking the argument, we’ll run Ruby’s .each method to run over all the items in the list.&lt;/p&gt;
+
+&lt;xmp&gt;
+def max(list)
+  max_so_far = -1
+  max_second = -1
+
+  list.each do |l|
+  end
+end
+&lt;/xmp&gt;
+
+&lt;p&gt;Another step closer. Here’s the tricky part, so let’s start by finding the largest number.&lt;/p&gt;
+
+&lt;xmp&gt;
+def max(list)
+  max_so_far = list.first
+  list.each do |l|
+    if l &amp;gt; max_so_far
+      max_so_far = l
+    end
+  end
+  max_so_far
+end
+
+&lt;/xmp&gt;
+
+&lt;p&gt;Boom! The logic checks if l &amp;gt; max_so_far and if so, assigns max_so_far to the value of l. After we leave the loop, we return the value of max_so_far. Let’s check that by running a the function. Add this final line.&lt;/p&gt;
+
+&lt;xmp&gt;
+max([1, 4, 5, 7, 9])
+&lt;/xmp&gt;
+
+&lt;p&gt;Save the file as a .rb extension, then run ‘ruby [file name].rb’. You should get the output ‘9’, the largest number. Now to get the second highest number. After the if conditional checking the list, set max_second equal to max_so_far. This will take the max_so_far that’s stored in memory (i.e. the second highest number).&lt;/p&gt;
+
+&lt;xmp&gt;
+def max(list)
+  max_so_far = -1
+  max_second = -1
+
+  list.each do |l|
+    if l &amp;gt; max_so_far
+      max_second = max_so_far
+      max_so_far = l
+    end
+  end
+
+end
+
+puts max([1, 4, 2, 6, 0])
+&lt;/xmp&gt;
+
+&lt;p&gt;Getting warmer. Branch out an else conditional to check if l is greater than max_second.&lt;/p&gt;
+
+&lt;xmp&gt;
+def max(list)
+  max_so_far = -1
+  max_second = -1
+
+  list.each do |l|
+    if l &amp;gt; max_so_far
+      max_second = max_so_far
+      max_so_far = l
+    else
+      if l &amp;gt; max_second
+        max_second = l
+      end
+    end
+  end
+
+end
+
+puts max([1, 4, 2, 6, 0])
+&lt;/xmp&gt;
+
+&lt;p&gt;Cha-ching! That’s now working code to check the second largest number in a list.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jun 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/topics/project-euler-type-ruby-questions.html</link>
+        <guid isPermaLink="true">http://ryanj.tech/topics/project-euler-type-ruby-questions.html</guid>
+        
+        
+        <category>topics</category>
+        
+      </item>
+    
+      <item>
+        <title>Why I Became a Developer</title>
+        <description>&lt;p&gt;I made the decision to develop after recommending it to so many friends and wondering why I wasn’t doing it myself. Let’s see:&lt;/p&gt;
+
+&lt;p&gt;A lucrative in-demand career
+Culture that emphasizes not being an asshole
+New interesting situations everyday
+Potential to work from anywhere
+Having a set of skills that makes you highly sought after&lt;/p&gt;
+
+&lt;p&gt;I finally got onto Codeacademy tried it out and realized, I can do this. Actually, I struggled a lot and it was very difficult, but as far as I hear, that’s part of being a developer (or no different to any profession as far as I’m concerned).&lt;/p&gt;
+
+&lt;p&gt;I love the idea of being able to build a website and deploy it around the world in seconds. Plus having a great idea for a startup and being able to execute on the concept without the need to hire a developer because - I am one :-)&lt;/p&gt;
+</description>
+        <pubDate>Mon, 06 Jun 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/topics/why-i-became-a-developer.html</link>
+        <guid isPermaLink="true">http://ryanj.tech/topics/why-i-became-a-developer.html</guid>
+        
+        
+        <category>topics</category>
+        
+      </item>
+    
+      <item>
+        <title>Angular Frontend on Rails</title>
+        <description>&lt;h4&gt;ScriptRank&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://github.com/empireofryan/scriptrank&quot;&gt;Launch Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ScriptRank is a reenvisioning of a prior Rails project. Now updated to Angular, the program functions as a single page app.&lt;/p&gt;
+
+&lt;p&gt;The current iteration of the app includes a Devise authentication, which only allows for a user to login and create a new script or browse and vote/review on already made ones.&lt;/p&gt;
+
+&lt;p&gt;The URL path, &quot;localhost:3000/#/scripts&quot; loads the scripts index page. What was previously done by routing into a &quot;genres&quot; URL. The magic of Angular filters searches the script based on clicking the genre.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://photos-6.dropbox.com/t/2/AAC6V_HsJB5Py0fY4dsLU50v3wdt9o8uu7mV5EVA4PmuPw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.03.png/EMzIsasEGJ8CIAIoAg/vYfrnEc6JhLmrbzfvlI6Bx6xSt1nZF-IePDE8ht7dnc?size=2048x1536&amp;amp;size_mode=3&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Did you spot the link target at the bottom left? It points to a JSON object rather than a page. Check out the next image. Notice something about the URL? It&#39;s exactly the same!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://photos-3.dropbox.com/t/2/AABCgqkQKs6kMl6M5CAcYddGs3kThv4hoZ3x7bbpezF3tw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.27.png/EMzIsasEGJ8CIAIoAg/HPgCn76HSDsZjSLXyEymLoe2kF1ps4uO6IW7oSi8CGA?size=2048x1536&amp;amp;size_mode=3&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You don&#39;t need to own a classic Thunderbird to want to take a look under the hood. Here&#39;s the magic behind the invisible reload functionality. Let&#39;s break it down step by step:&lt;/p&gt;
+
+&lt;xmp&gt;
+def index
+  @scripts = Script.where(genre_id: params[:genre_id])
+    respond_to do |f|
+    f.html { render :index }
+    f.json { render json: @scripts }
+   end
+end
+
+def show
+  @script = Script.includes(:genre).find(params[:id])
+  respond_to do |f|
+    f.html { render :show }
+    f.json { render json: @script }
+  end
+end
+&lt;/xmp&gt;
+</description>
+        <pubDate>Mon, 06 Jun 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/topics/angular-frontend-on-rails.html</link>
+        <guid isPermaLink="true">http://ryanj.tech/topics/angular-frontend-on-rails.html</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>topics</category>
+        
+      </item>
+    
+      <item>
+        <title>Rails with Jquery</title>
+        <description>&lt;h4&gt;Filmr with Jquery&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://github.com/empireofryan/filmr&quot;&gt;Launch Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Filmr with Jquery takes the codebase from the prior Rails Filmr app and adds the functionality of JQuery to provide seamless AJAX page reloads.&lt;/p&gt;
+
+&lt;p&gt;The current iteration of the app includes a Devise authentication and Facebook Oauth Login. Create a new script, save by genre, and make comments on any script.&lt;/p&gt;
+
+&lt;p&gt;Take the following screenshot for example. The URL path, &quot;localhost:3001/genres/3/scripts&quot; refers to &quot;genre: 3&quot; which corresponds to the &quot;Horror&quot; scripts index page. Yet rather than following REST architecture and redirecting to the individual script page (i.e. &quot;genres/3/scripts/51&quot;) the app loads a JSON template.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://photos-6.dropbox.com/t/2/AAC6V_HsJB5Py0fY4dsLU50v3wdt9o8uu7mV5EVA4PmuPw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.03.png/EMzIsasEGJ8CIAIoAg/vYfrnEc6JhLmrbzfvlI6Bx6xSt1nZF-IePDE8ht7dnc?size=2048x1536&amp;amp;size_mode=3&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Did you spot the link target at the bottom left? It points to a JSON object rather than a page. Check out the next image. Notice something about the URL? It&#39;s exactly the same!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://photos-3.dropbox.com/t/2/AABCgqkQKs6kMl6M5CAcYddGs3kThv4hoZ3x7bbpezF3tw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.27.png/EMzIsasEGJ8CIAIoAg/HPgCn76HSDsZjSLXyEymLoe2kF1ps4uO6IW7oSi8CGA?size=2048x1536&amp;amp;size_mode=3&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You don&#39;t need to own a classic Thunderbird to want to take a look under the hood. Here&#39;s the magic behind the invisible reload functionality. Let&#39;s break it down step by step:&lt;/p&gt;
+
+&lt;xmp&gt;
+def index
+  @scripts = Script.where(genre_id: params[:genre_id])
+    respond_to do |f|
+    f.html { render :index }
+    f.json { render json: @scripts }
+   end
+end
+
+def show
+  @script = Script.includes(:genre).find(params[:id])
+  respond_to do |f|
+    f.html { render :show }
+    f.json { render json: @script }
+  end
+end
+&lt;/xmp&gt;
+</description>
+        <pubDate>Wed, 01 Jun 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/works/rails_w_jquery.html</link>
+        <guid isPermaLink="true">http://ryanj.tech/works/rails_w_jquery.html</guid>
+        
+        
+        <category>works</category>
+        
+      </item>
+    
+      <item>
+        <title>Sinatra App</title>
+        <description>
+</description>
+        <pubDate>Sun, 22 May 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/topics/sinatra-app.html</link>
+        <guid isPermaLink="true">http://ryanj.tech/topics/sinatra-app.html</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>topics</category>
+        
+      </item>
+    
+      <item>
+        <title>Screenplay App</title>
+        <description>&lt;p&gt;Hello&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 May 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/topics/Ruby_on_Rails/</link>
+        <guid isPermaLink="true">http://ryanj.tech/topics/Ruby_on_Rails/</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>topics</category>
+        
+        <category>Ruby_on_Rails</category>
+        
+      </item>
+    
+      <item>
+        <title>Ruby on Rails</title>
+        <description>&lt;h4&gt;FILMR&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;http://github.com/empireofryan/filmr&quot;&gt;Code on Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Filmr aims to disrupt Hollywood by enabling creatives to interact direct with an audience. Users can upload screenplays by genre while adding reviews and upvotes.&lt;/p&gt;
+
+&lt;p&gt;The current iteration of the app includes a Devise authentication and Facebook Oauth Login. Create a new script, save by genre, and make comments on any script.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 May 2016 00:00:00 -0400</pubDate>
+        <link>http://ryanj.tech/works/ruby_on_rails.html</link>
+        <guid isPermaLink="true">http://ryanj.tech/works/ruby_on_rails.html</guid>
+        
+        
+        <category>works</category>
+        
+      </item>
     
   </channel>
 </rss>

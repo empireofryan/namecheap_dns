@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rails with Jquery</title>
+  <meta name="description" content="Filmr">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://ryanj.tech/works/rails_w_jquery.html">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <style>
+  #main > header {
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/rails.jpg");
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/rails.jpg");
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/rails.jpg");
+    background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/images/rails.jpg");
+  }
+  </style>
+  <!--[if lte IE 9]>
+  <style>
+  #main > header {
+    background-image: url("/images/rails.jpg");
+  }
+  </style>
+  -->
+  <link rel="alternate" type="application/rss+xml" title="ryan johnson" href="http://ryanj.tech/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">ryan johnson</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/works/">Works</a></li>
+            <li><a href="/topics/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/feed.xml"
+                   class="icon fa-feed"> RSS Feed</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+          <header>
+    <h2>Rails with Jquery</h2>
+    <p>Filmr</p>
+  </header>
+  <ul class="breadcrumb">
+  <li><a href="/index.html">Home</a></li>
+  <li style="text-transform: capitalize;"><a href="/works">works</a></li>
+  <li>Rails with Jquery</li>
+</ul>
+
+
+
+          <section class="wrapper style5">
+    <div class="inner">
+      <span id="post-date">1 June 2016</span><hr
+        style="margin-top:3px;" />
+      <!-- <h4>Skills</h4> -->
+  <ul class="techlist">
+</ul>
+
+  
+
+      <h4>Filmr with Jquery</h4>
+<p><a href="http://github.com/empireofryan/filmr">Launch Github</a></p>
+<p>Filmr with Jquery takes the codebase from the prior Rails Filmr app and adds the functionality of JQuery to provide seamless AJAX page reloads.</p>
+
+<p>The current iteration of the app includes a Devise authentication and Facebook Oauth Login. Create a new script, save by genre, and make comments on any script.</p>
+
+<p>Take the following screenshot for example. The URL path, "localhost:3001/genres/3/scripts" refers to "genre: 3" which corresponds to the "Horror" scripts index page. Yet rather than following REST architecture and redirecting to the individual script page (i.e. "genres/3/scripts/51") the app loads a JSON template.</p>
+
+<p><img src="https://photos-6.dropbox.com/t/2/AAC6V_HsJB5Py0fY4dsLU50v3wdt9o8uu7mV5EVA4PmuPw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.03.png/EMzIsasEGJ8CIAIoAg/vYfrnEc6JhLmrbzfvlI6Bx6xSt1nZF-IePDE8ht7dnc?size=2048x1536&amp;size_mode=3" style="width:100%" /></p>
+
+<p>Did you spot the link target at the bottom left? It points to a JSON object rather than a page. Check out the next image. Notice something about the URL? It's exactly the same!</p>
+
+<p><img src="https://photos-3.dropbox.com/t/2/AABCgqkQKs6kMl6M5CAcYddGs3kThv4hoZ3x7bbpezF3tw/12/542197078/png/32x32/1/_/1/2/Screenshot%202016-06-02%2015.32.27.png/EMzIsasEGJ8CIAIoAg/HPgCn76HSDsZjSLXyEymLoe2kF1ps4uO6IW7oSi8CGA?size=2048x1536&amp;size_mode=3" style="width:100%" /></p>
+
+<p>You don't need to own a classic Thunderbird to want to take a look under the hood. Here's the magic behind the invisible reload functionality. Let's break it down step by step:</p>
+
+<xmp>
+def index
+  @scripts = Script.where(genre_id: params[:genre_id])
+    respond_to do |f|
+    f.html { render :index }
+    f.json { render json: @scripts }
+   end
+end
+
+def show
+  @script = Script.includes(:genre).find(params[:id])
+  respond_to do |f|
+    f.html { render :show }
+    f.json { render json: @script }
+  end
+end
+</xmp>
+
+      <div class="backnext btnbottom">
+                <div class="back">
+        <div class="bpointer"><a href="/works/"
+         class="button small" title="Back">Index</a></div>
+         <!-- class="icon fa-backward" title="Back"></a></div> -->
+        <div class="btitle"><a href="/works/">Works Index</a></div>
+        </div>
+        <div class="next">
+        <div class="npointer"><a href="/works/ruby_on_rails.html"
+         class="button small" title="Next">Next &gt;</a></div>
+         <!-- class="icon fa-forward" title="Next"></a></div> -->
+        <div class="ntitle"><a href="/works/ruby_on_rails.html">Ruby on Rails</a></div>
+        </div>
+
+      </div>
+      <script>
+      document.body.onkeyup = function(e){
+        if (e.keyCode == '37') { window.location = '/works/'; }
+        if (e.keyCode == '39') { window.location = '/works/ruby_on_rails.html'; }
+      };
+      </script>
+
+  
+    </div>
+  </section>
+
+
+      </article>
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    <li><a target="_blank" href="https://twitter.com/empireofryan" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    <li><a target="_blank" href="https://github.com/empireofryan" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    <li><a target="_blank" href="/contact/" class="icon fa-envelope"
+           ><span class="label">E-mail</span></a></li>
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 2010,
+    2016
+      Ryan Johnson</li>
+    <!-- <li><a href="/credits/">Credits</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+    </div>
+
+  </body>
+
+</html>

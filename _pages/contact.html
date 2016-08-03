@@ -14,9 +14,11 @@ script: |
 <section>
   <form action="https://getsimpleform.com/messages?form_api_token=341fde1e81812a20c026f2fd7e85d543" method="post">
     <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
-    <input type='hidden' name='redirect_to' value='http:/www.ryanj.tech/contact-success.html' />
+    <input type='hidden' name='redirect_to' value='http:/www.ryanj.tech/contact-success/' />
     <!-- all your input fields here.... -->
-    <input type='text' name='test' />
-    <input type='submit' value='Test form' />
+    <label style="margin-top:15px; margin-bottom:5px">Name</label><input type='text' name='test' />
+    <label style="margin-top:15px; margin-bottom:5px">Email</label><input type='text' name='email' />
+    <label style="margin-top:15px; margin-bottom:5px">Message</label><textarea cols="40" rows="5" type='text' name='message' style="height:200px"></textarea>
+    <input style="margin-top:15px" type='submit' value='Contact' />
   </form>
 </section>

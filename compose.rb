@@ -28,15 +28,12 @@ STDOUT.sync = true
 #
 
 puts <<-eoh
-
 This script helps you create a post. It adds it to the _drafts folder.
 (Hit Ctrl-C at any time to cancel. Default values are shown in brackets;
 to accept the default you can just hit return.)
-
 This site has two types of posts:
 - Topics: blog posts
 - Works: portfolio entries
-
 eoh
 print "Is this a (t)opic or (w)ork? [t]: "
 type = ''
@@ -52,7 +49,6 @@ categories = Array.new
 if type=='w'
   categories << 'works'
   puts <<-eoh
-
 Higher priority works are listed first and also get the same priority value
 for the site map. 1.0 is the highest possible value, and you probably don't
 want it to have a priority under 0.5. What priority should it have?
@@ -69,7 +65,6 @@ want it to have a priority under 0.5. What priority should it have?
 else
   categories << 'topics'
   puts <<-eoh
-
 The first 10 featured posts are listed on the front page and get a higher
 priority in the site map. Is this a featured post?
   eoh
@@ -83,14 +78,12 @@ priority in the site map. Is this a featured post?
     break
   end
   puts <<-eoh
-
 If this is a part of a series of posts that you want to be displayed with
 back/next links, you can specify a sub-category name. Note that only the
 first topic in the sub-category is listed in the topics index. Also note
 that categories should probably have alphanumeric, underscores, hyphens,
 and space characters only. Tip: I title my first topic in the sub-category
 with the same name as the sub-category so that the breadcrumb looks nice.
-
   eoh
   print "So, is this part of a sub-category grouping? (y or [n]): "
   isgroup = gets
@@ -148,7 +141,6 @@ if type == 't'
 end
 
 puts <<-eoc
-
 If you want an image in the banner, put the image in the /images folder
 and type the name here. If it's in another folder, prefix the image with
 '/' and the folder name, such as /unique/images/mine.jpg. For no image,
@@ -159,12 +151,10 @@ back = gets
 back = back.strip! == '' ? nil : back
 
 puts <<-eoc
-
 There are a few other options you could add, such as a mini-heading, a
 full-width body, and a custom icon for featured posts on the front page.
 For a full description of options, see the "Guide for New Posts" topic
 when you run jekyll serve --future.
-
 Otherwise, hit Enter to create this starter post.
 eoc
 letsdothis = gets
@@ -195,8 +185,12 @@ fname = dstamp + "-" + tslug + '.' + ext
 STDOUT.flush
 
 if (File.exist?("./_drafts/" + fname) or File.exist?("./_posts/" + fname))
-  puts "Sorry you went through all that trouble, but a file with that name exists!"
+  puts <<-eom
+Sorry you went through all that trouble, but the file
+#{fname} already exists.
+  eom
 else
+  unless (Dir.exist?("./_drafts/")) then Dir.mkdir("./_drafts") end
   File.open("./_drafts/" + fname, 'w') do |f|
     f.puts "---"
     f.puts "title: " + title
@@ -214,16 +208,11 @@ else
     f.puts "#date: " + tstamp
     f.puts "#lastupdated: " + tstamp
     f.puts "---"
+    patharg = Gem.win_platform? ? ".\\_drafts\\" + fname : "./_drafts/" + fname
+    puts "File created: " + patharg
+    # open it in an editor if specified
+    if (cfgfile['compose']['editor'])
+      system cfgfile['compose']['editor'] + ' ' + patharg
+    end
   end
-end
-
-patharg = Gem.win_platform? ? ".\\_drafts\\" + fname : "./_drafts/" + fname
-puts "File created: " + patharg
-
-#
-# And, open it in an editor if specified
-#
-
-if (cfgfile['compose']['editor'])
-  system cfgfile['compose']['editor'] + ' ' + patharg
 end

@@ -11,26 +11,26 @@
 # (Using that method instead of site.owner, in case your posts get cloned with your repo.)
 
 # Site settings
-title: ryanj.tech
+title: ryan johnson
 description: Full Stack &#x2192; Dev
 owner:
   name: Ryan Johnson
   email: rjohnson2001@gmail.com
   url: http://ryanj.tech
-first_published: 2008 # if migrating another site, the year of your first publish
+first_published: 2010 # if migrating another site, the year of your first publish
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://ryanj.tech" # the base hostname & protocol for your site
 
 # on landing page
 # - set the greeting only if you want to display the first green section
 greeting:
-  title: Welcome!  
-  text: Let's code something
+  title: Ruby | Rails | Angular
+  text: Complete Full-Stack solutions. From wireframe to deployment.
 # - title for your blog's featured posts
 features-title: Featured topics
 # - displayed at the bottom
 closing-head: Thanks for visiting
-closing-para: Feel free to get in touch. Cheers!
+closing-para: Feel free to get in touch.
 
 # on all pages (and the first three you list display with greeting, if included)
 social:
@@ -39,7 +39,7 @@ social:
   #linkedin-square: https://linkedin.com/in/
  # facebook-official: https://facebook.com/
  # google-plus-square: https://plus.google.com/
-  email: rjohnson2001@gmail.com
+  email: /contact/
   #flickr:
   #instagram:
   #youtube-square:
@@ -88,7 +88,7 @@ compose:
 navlinks: bottom
 
 # expecting more works? mark your list as in-progress
-works_in_progress: yes
+works_in_progress: no
 
 # If you have custom extensions, specifically includes/_my/custom.scss,
 # set this to yes

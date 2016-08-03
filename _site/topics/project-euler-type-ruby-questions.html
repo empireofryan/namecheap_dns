@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Euler Type Ruby Questions</title>
+  <meta name="description" content="Find the second largest number in a list without using 'sort' method.">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://ryanj.tech/topics/project-euler-type-ruby-questions.html">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="ryan johnson" href="http://ryanj.tech/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">ryan johnson</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/works/">Works</a></li>
+            <li><a href="/topics/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/feed.xml"
+                   class="icon fa-feed"> RSS Feed</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="standard">
+
+          <header>
+    <h2>Project Euler Type Ruby Questions</h2>
+    <p>Find the second largest number in a list without using 'sort' method.</p>
+  </header>
+  <ul class="breadcrumb">
+  <li><a href="/index.html">Home</a></li>
+  <li style="text-transform: capitalize;"><a href="/topics">topics</a></li>
+  <li>Project Euler Type Ruby Questions</li>
+</ul>
+
+
+
+          <section class="wrapper style5">
+    <div class="inner">
+      <span id="post-date">20 June 2016</span><hr
+        style="margin-top:3px;" />
+
+      <table>
+  <tbody>
+    <tr>
+      <td>Anyone with familiarity of Ruby knows basic conditionals (if, else, while) and methods of iteration (.each do</td>
+      <td>i</td>
+      <td>). What really gets the brain cells firing is a set of Ruby puzzles known as <a href="https://projecteuler.net/">Project Euler</a>. These computational logic questions can trip up a developer with plenty of Rails/JavaScript experience (me) but not enough time spent understanding computational problems (me again).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I spend the past couple days breaking down how to solve these types of problems. Let’s start with the premise, <b>find the second largest number in a list</b>. Oh, and to make it beyond a one-line challenge, do it without using Ruby’s sort method. How do we solve that? Like any big problem, let’s begin by breaking it down.</p>
+
+<p>#Need two variables, max_so_far and max_second
+Step outside the world of coding an imagine you’re doing down a list of basketball players with their jersey numbers. If you wanted to return the highest number, you’d start with the first number, let’s say it’s 14, then you’d move to the next number, say 44, and ask is first number (14) greater than next number (44). If the next number is greater than the previous number we want to replace the second number with the first.</p>
+
+<p>Even though the language above is written in basic English and pseudocode, the keywords describe just what we’re looking for.
+First number and next number &lt;- going to need two variables
+“Is first number greater than next number” &lt;- require &gt; variables
+“If the next number is greater…replace” &lt;- if conditional needed</p>
+
+<p>This is a great starting point to begin with what we know.</p>
+
+<p>Assuming we work with all positive integers (as far as I know there’s no negative jersey numbers) we can set two variables max_so_far (the biggest number found in the list) and max_second (the second biggest number) as ‘-1’ which essentially renders them nil. Knowing to place all the logic inside a method, an appropriate name would be max, taking an argument of list.</p>
+
+<xmp>
+def max(list)
+  max_so_far = -1
+  max_second = -1
+end
+</xmp>
+
+<p>Now it’s time to iterate over the list. Taking the argument, we’ll run Ruby’s .each method to run over all the items in the list.</p>
+
+<xmp>
+def max(list)
+  max_so_far = -1
+  max_second = -1
+
+  list.each do |l|
+  end
+end
+</xmp>
+
+<p>Another step closer. Here’s the tricky part, so let’s start by finding the largest number.</p>
+
+<xmp>
+def max(list)
+  max_so_far = list.first
+  list.each do |l|
+    if l &gt; max_so_far
+      max_so_far = l
+    end
+  end
+  max_so_far
+end
+
+</xmp>
+
+<p>Boom! The logic checks if l &gt; max_so_far and if so, assigns max_so_far to the value of l. After we leave the loop, we return the value of max_so_far. Let’s check that by running a the function. Add this final line.</p>
+
+<xmp>
+max([1, 4, 5, 7, 9])
+</xmp>
+
+<p>Save the file as a .rb extension, then run ‘ruby [file name].rb’. You should get the output ‘9’, the largest number. Now to get the second highest number. After the if conditional checking the list, set max_second equal to max_so_far. This will take the max_so_far that’s stored in memory (i.e. the second highest number).</p>
+
+<xmp>
+def max(list)
+  max_so_far = -1
+  max_second = -1
+
+  list.each do |l|
+    if l &gt; max_so_far
+      max_second = max_so_far
+      max_so_far = l
+    end
+  end
+
+end
+
+puts max([1, 4, 2, 6, 0])
+</xmp>
+
+<p>Getting warmer. Branch out an else conditional to check if l is greater than max_second.</p>
+
+<xmp>
+def max(list)
+  max_so_far = -1
+  max_second = -1
+
+  list.each do |l|
+    if l &gt; max_so_far
+      max_second = max_so_far
+      max_so_far = l
+    else
+      if l &gt; max_second
+        max_second = l
+      end
+    end
+  end
+
+end
+
+puts max([1, 4, 2, 6, 0])
+</xmp>
+
+<p>Cha-ching! That’s now working code to check the second largest number in a list.</p>
+
+<hr style="margin-bottom:12px;" />
+<div class="author">
+<!-- style="margin:8px 28px 12px 0;position:relative;float:left;"> -->
+  <!-- style="position: relative; float: left;margin:0;padding:0;" -->
+  <div style="display:inline-block;border-radius:7px;overflow:hidden;height:100px;width:100px;background:url(/images/);background-size:100px;"></div>
+  <div style="display:inline-block;padding-left:12px;vertical-align:top;"><b>by:<br /> Ryan</b><br />(<a href="mailto:"></a>)<br
+    /><i><a href="" target="_blank"></a></i>
+  </div>
+  <div class="auth-desc"></div>
+</div>
+<hr style="margin-top:9px;" />
+
+  
+    </div>
+  </section>
+
+
+      </article>
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    <li><a target="_blank" href="https://twitter.com/empireofryan" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    <li><a target="_blank" href="https://github.com/empireofryan" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    <li><a target="_blank" href="/contact/" class="icon fa-envelope"
+           ><span class="label">E-mail</span></a></li>
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 2010,
+    2016
+      Ryan Johnson</li>
+    <!-- <li><a href="/credits/">Credits</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+    </div>
+
+  </body>
+
+</html>
