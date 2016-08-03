@@ -21,16 +21,6 @@ first_published: 2010 # if migrating another site, the year of your first publis
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://ryanj.tech" # the base hostname & protocol for your site
 
-# on landing page
-# - set the greeting only if you want to display the first green section
-greeting:
-  title: Ruby | Rails | Angular
-  text: Complete Full-Stack solutions. From wireframe to deployment.
-# - title for your blog's featured posts
-features-title: Featured topics
-# - displayed at the bottom
-closing-head: Thanks for visiting
-closing-para: Feel free to get in touch.
 
 # on all pages (and the first three you list display with greeting, if included)
 social:
